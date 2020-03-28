@@ -1,0 +1,137 @@
+<!doctype html>
+    <html lang="en">
+        <head>
+            <title>Pizza Topic</title>
+            <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="stylesheet.css" rel="stylesheet">
+        </head>
+        
+        <body>
+            <div><img class="neonimg" src="pizza1.jpg" alt="pizza neon light"></div>
+            <div class="wrapper">
+            <header>
+                <h1>Welcome to Pizza Topic</h1>
+            </header>
+            <nav class="navi">
+                <a href="index.html">HOME</a>
+                <a href="index.html">MENU</a>
+                <a href="index.html">ORDER</a>
+            </nav>
+            <main>
+                <div>
+                    <p>
+                    Make your own pizza with Pizza Topic!  Starts from $8-
+                    </p>
+                </div>
+                <fieldset class="select">
+                    <legend>
+                        Step1: Choose Crust
+                    </legend>
+                    <form">
+                        <input type="radio" class="crust" id="crust" value="1"/>
+                        <label for="thin"> Thin-Crust</label>
+                        <input type="radio"class="crust" id="crust" value="1"/>
+                        <label for="flat"> Flatbread-Crust</label>
+                        <input type="radio" class="crust" id="crust" value="1"/>
+                        <label for="thick">Thick-Crust</label>
+                    </form>
+                </fieldset>
+                <fieldset class="select">
+                    <legend>
+                        Step2: Choose Topping 
+                    </legend>
+                    <form>
+                        <input type="checkbox" id="item1" value="1"/>
+                        <label> Pepperoni</label>
+                        <input type="checkbox" id="item1" value="1"/>
+                        <label> Mushrooms</label>
+                        <input type="checkbox" id="item1" value="1"/>
+                        <label>Onion</label>
+                        
+                    </form>
+                </fieldset>
+                <fieldset id="select">
+                    <legend>Payment</legend>
+                    <div id="cards" class="inline">
+                       <input id="visa" name="PaymentType" type="radio" value="Visa" />
+                       <label for="visa">Visa</label>
+                       <input id="mc" name="PaymentType" type="radio" value="MC" />
+                       <label for="mc">Master Card</label>
+                       <input id="amex" name="PaymentType" type="radio" value="AmEx" />
+                       <label for="amex">American Express</label>
+                    </div>
+                    <div>
+                       <label for="ccNum">Card #</label>
+                       <input id="ccNum" name="CardNumber" type="number" required="required" />
+                       <div id="ccNumErrorMessage"></div>
+                    </div>
+                    <div>
+                       <div class="inline" id="exp">
+                          <label for="expMo" id="expMoLabel">Expiration Month</label>
+                          <select id="expMo" name="ExpMonth" required="required">
+                             <option value="01">01</option>
+                             <option value="02">02</option>
+                             <option value="03">03</option>
+                             <option value="04">04</option>
+                             <option value="05">05</option>
+                             <option value="06">06</option>
+                             <option value="07">07</option>
+                             <option value="08">08</option>
+                             <option value="09">09</option>
+                             <option value="10">10</option>
+                             <option value="11">11</option>
+                             <option value="12">12</option>
+                          </select>
+                          <label for="expYr" id="expYrLabel">Expiration Year</label>
+                          <select id="expYr" name="ExpYear" required="required">
+                             <option value="2017">2020</option>
+                             <option value="2018">2021</option>
+                             <option value="2019">2022</option>
+                             <option value="2020">2023</option>
+                             <option value="2021">2024</option>
+                          </select>
+                       </div>
+                       <label for="cvv">CVV</label>
+                       <input id="cvv" name="CVVValue" type="number" required="required" /> 
+                       <div id="cvvErrorMessage"></div>
+                    </div>
+                    <div class="errorMsg"></div>
+                 </fieldset>
+                 <input type="submit" onclick = "validations()">
+                 <div id="numErrorText"></div>
+            </main>
+            <footer>
+                Copyright&copy;2020 Honami Sasahara
+            </footer>
+            </div>
+            <script>
+                
+                
+                function validateOrder(){
+                    var items = document.getElementByTagName("#crust input");
+                    var validateTotal = 0;
+                    validateCrust = true;
+                    for (var i = 0; i<3; i++){
+                        if (items[i].checked){
+                            validateTotal= validateTotal+ items[i].value;
+                        } 
+                    } if (validateTotal === 0){
+                            validateCrust === false;
+                            alert("Please choose crust");}
+                }  
+                function validate(){
+                    if (document.getElementById("ccNum").value === ""){
+                        alert("Please type in your card number")
+                    }
+                    if (document.getElementById("cvv").value === ""){
+                        alert("please provide your cvv")
+                    }
+                    
+                }
+                function validations (){
+                    validate();
+                    validateOrder();
+                }
+            </script>
+        </body>
+    </html>
